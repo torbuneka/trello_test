@@ -1,5 +1,3 @@
-import '../assets/styles/common.css';
-
 function App() {
   return (
     <>

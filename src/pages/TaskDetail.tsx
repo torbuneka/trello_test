@@ -1,4 +1,3 @@
-import '../assets/styles/common.css';
 import { useParams } from 'react-router-dom';
 
 function Detail() {

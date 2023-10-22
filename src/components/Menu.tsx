@@ -1,4 +1,3 @@
-import '../assets/styles/common.css';
 import menuLogo from '/menu_logo.svg';
 
 function Menu() {

@@ -1,16 +1,17 @@
-import '../assets/styles/common.css';
+import { Link } from 'react-router-dom';
 
 function List() {
   return (
     <>
       <div className="list">
         <p>Список задач</p>
-        <a href={`/detail/1`} className="list__item">
-          1 задача
-        </a>
-        <a href={`/detail/2`} className="list__item">
-          2 задача
-        </a>
+
+        <Link to="/detail/1">
+          <p>1 задача</p>
+        </Link>
+        <Link to="/detail/2">
+          <p>2 задача</p>
+        </Link>
       </div>
     </>
   );
