@@ -1,4 +1,4 @@
-function App() {
+function CreateTask() {
   return (
     <>
       <p className="read-the-docs">Create</p>
@@ -6,4 +6,4 @@ function App() {
   );
 }
 
-export default App;
+export default CreateTask;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function List() {
+function TaskList() {
   return (
     <>
       <div className="list">
@@ -17,4 +17,4 @@ function List() {
   );
 }
 
-export default List;
+export default TaskList;
