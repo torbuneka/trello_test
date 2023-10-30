@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function List() {
   return (
@@ -6,12 +6,12 @@ function List() {
       <div className="list">
         <p>Список задач</p>
 
-        <Link to="/detail/1">
+        <NavLink to="/detail/1">
           <p>1 задача</p>
-        </Link>
-        <Link to="/detail/2">
+        </NavLink>
+        <NavLink to="/detail/2">
           <p>2 задача</p>
-        </Link>
+        </NavLink>
       </div>
     </>
   );
