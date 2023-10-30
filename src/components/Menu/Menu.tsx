@@ -1,7 +1,7 @@
 import menuLogo from '@/assets/img/menu_logo.svg';
 import { NavLink } from 'react-router-dom';
 
-function Menu() {
+export const Menu = () => {
   return (
     <>
       <div className="menu">
@@ -44,6 +44,4 @@ function Menu() {
       </div>
     </>
   );
-}
-
-export default Menu;
+};

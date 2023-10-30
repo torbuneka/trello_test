@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function TaskList() {
+export const TaskList = () => {
   return (
     <>
       <div className="list">
@@ -15,6 +15,4 @@ function TaskList() {
       </div>
     </>
   );
-}
-
-export default TaskList;
+};

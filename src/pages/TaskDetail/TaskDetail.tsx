@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-function TaskDetail() {
+export const TaskDetail = () => {
   const { id } = useParams();
   return (
     <>
@@ -8,6 +8,4 @@ function TaskDetail() {
       <p>{id}</p>
     </>
   );
-}
-
-export default TaskDetail;
+};
