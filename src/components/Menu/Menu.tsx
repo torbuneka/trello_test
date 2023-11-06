@@ -1,16 +1,17 @@
 import menuLogo from '@/assets/img/menu_logo.svg';
 import { NavLink } from 'react-router-dom';
+import { RoutesPath } from '../../routesPath';
 
 export const Menu = () => {
   return (
     <>
       <div className="menu">
         <NavLink
-          to="/"
+          to={RoutesPath.Main}
           className={({ isActive }) =>
             [
               isActive
-                ? 'bg-rose-100 text-rose-600 font-bold'
+                ? 'text-rose-600 font-bold'
                 : 'text-purple-600 font-semibold'
             ].join(' ')
           }
@@ -18,11 +19,11 @@ export const Menu = () => {
           <img src={menuLogo} className="menu__logo" alt="Vite logo" />
         </NavLink>
         <NavLink
-          to="/list"
+          to={RoutesPath.List}
           className={({ isActive }) =>
             [
               isActive
-                ? 'bg-rose-100 text-rose-600 font-bold'
+                ? ' text-rose-600 font-bold'
                 : 'text-purple-600 font-semibold'
             ].join(' ')
           }
@@ -30,11 +31,11 @@ export const Menu = () => {
           Список
         </NavLink>
         <NavLink
-          to="/create"
+          to={RoutesPath.Create}
           className={({ isActive }) =>
             [
               isActive
-                ? 'bg-rose-100 text-rose-600 font-bold'
+                ? ' text-rose-600 font-bold'
                 : 'text-purple-600 font-semibold'
             ].join(' ')
           }

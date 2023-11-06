@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
+import { RoutesPath } from '../../routesPath';
 
 export const TaskList = () => {
   return (
@@ -6,10 +7,10 @@ export const TaskList = () => {
       <div className="list">
         <p>Список задач</p>
 
-        <Link to="/detail/1">
+        <Link to={generatePath(RoutesPath.Detail, { id: '1' })}>
           <p>1 задача</p>
         </Link>
-        <Link to="/detail/2">
+        <Link to={generatePath(RoutesPath.Detail, { id: '2' })}>
           <p>2 задача</p>
         </Link>
       </div>

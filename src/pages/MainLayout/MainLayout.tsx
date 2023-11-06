@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import Menu from '../../components/Menu';
+import { Menu } from '../../components';
 import '../../assets/styles/common.css';
 
 export const MainLayout = () => {
