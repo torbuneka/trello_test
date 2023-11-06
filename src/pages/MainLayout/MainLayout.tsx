@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Menu } from '../../components';
+import { Menu, Loader } from '../../components';
 import '../../assets/styles/common.css';
 
 export const MainLayout = () => {
@@ -10,7 +10,7 @@ export const MainLayout = () => {
         <Menu />
       </div>
       <div id="detail">
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </div>
