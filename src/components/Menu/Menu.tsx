@@ -5,26 +5,22 @@ import { RoutesPath } from '../../routesPath';
 export const Menu = () => {
   return (
     <>
-      <div className="menu">
+      <div className="h-28 custom-menu-background p-3 flex items-center gap-3">
         <NavLink
           to={RoutesPath.Main}
           className={({ isActive }) =>
             [
-              isActive
-                ? 'text-rose-600 font-bold'
-                : 'text-purple-600 font-semibold'
+              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
             ].join(' ')
           }
         >
-          <img src={menuLogo} className="menu__logo" alt="Vite logo" />
+          <img src={menuLogo} className="h-full w-24" alt="Vite logo" />
         </NavLink>
         <NavLink
           to={RoutesPath.List}
           className={({ isActive }) =>
             [
-              isActive
-                ? ' text-rose-600 font-bold'
-                : 'text-purple-600 font-semibold'
+              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
             ].join(' ')
           }
         >
@@ -34,9 +30,7 @@ export const Menu = () => {
           to={RoutesPath.Create}
           className={({ isActive }) =>
             [
-              isActive
-                ? ' text-rose-600 font-bold'
-                : 'text-purple-600 font-semibold'
+              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
             ].join(' ')
           }
         >

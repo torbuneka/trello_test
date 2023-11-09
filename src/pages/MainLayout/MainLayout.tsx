@@ -9,7 +9,7 @@ export const MainLayout = () => {
       <div id="menubar">
         <Menu />
       </div>
-      <div id="detail">
+      <div id="detail" className="p-3">
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
