@@ -5,7 +5,7 @@ import { RoutesPath } from './routesPath';
 const CreateTask = lazy(() => import('./pages/CreateTask'));
 const TaskDetail = lazy(() => import('./pages/TaskDetail'));
 const TaskList = lazy(() => import('./pages/TaskList'));
-const MainLayout = lazy(() => import('./pages/MainLayout/'));
+const MainLayout = lazy(() => import('./components/layouts/MainLayout'));
 
 const routes = createBrowserRouter([
   {

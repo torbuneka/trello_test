@@ -1,15 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Menu, Loader } from '../../components';
-import '../../assets/styles/common.css';
+import { Menu, Loader } from '../..';
 
 export const MainLayout = () => {
   return (
     <>
-      <div id="menubar">
+      <div>
         <Menu />
       </div>
-      <div id="detail" className="p-3">
+      <div className="p-3">
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>

@@ -1,7 +1,8 @@
 export const RoutesPath = {
   Main: '/',
-  List: '/list',
-  Create: '/create',
-  Detail: '/detail/:id',
+  List: '/tasks',
+  Create: '/tasks/create',
+  Edit: '/tasks/edit/:id',
+  Detail: '/tasks/:id',
   Error: '*'
 };

@@ -1,17 +1,15 @@
-import menuLogo from '@/assets/img/menu_logo.svg';
+import menuLogo from '@src/assets/img/menu_logo.svg';
 import { NavLink } from 'react-router-dom';
-import { RoutesPath } from '../../routesPath';
+import { RoutesPath } from '../../../routesPath.ts';
 
 export const Menu = () => {
   return (
     <>
-      <div className="h-28 custom-menu-background p-3 flex items-center gap-3">
+      <div className="h-28 bg-menu p-3 flex items-center gap-3">
         <NavLink
           to={RoutesPath.Main}
           className={({ isActive }) =>
-            [
-              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
-            ].join(' ')
+            `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
         >
           <img src={menuLogo} className="h-full w-24" alt="Vite logo" />
@@ -19,9 +17,7 @@ export const Menu = () => {
         <NavLink
           to={RoutesPath.List}
           className={({ isActive }) =>
-            [
-              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
-            ].join(' ')
+            `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
         >
           Список
@@ -29,9 +25,7 @@ export const Menu = () => {
         <NavLink
           to={RoutesPath.Create}
           className={({ isActive }) =>
-            [
-              isActive ? 'menu-text decoration-wavy underline' : 'menu-text'
-            ].join(' ')
+            `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
         >
           Создать

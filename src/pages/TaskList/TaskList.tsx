@@ -3,17 +3,14 @@ import { RoutesPath } from '../../routesPath';
 
 export const TaskList = () => {
   return (
-    <>
-      <div className="list">
-        <p>Список задач</p>
-
-        <Link to={generatePath(RoutesPath.Detail, { id: '1' })}>
-          <p>1 задача</p>
-        </Link>
-        <Link to={generatePath(RoutesPath.Detail, { id: '2' })}>
-          <p>2 задача</p>
-        </Link>
-      </div>
-    </>
+    <div className="w-full">
+      <p>Список задач</p>
+      <Link to={generatePath(RoutesPath.Detail, { id: '1' })} className="block">
+        1 задача
+      </Link>
+      <Link to={generatePath(RoutesPath.Detail, { id: '2' })} className="block">
+        2 задача
+      </Link>
+    </div>
   );
 };

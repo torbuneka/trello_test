@@ -3,40 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
-  .text-custom-purple {
-    color: theme('colors.text');
-  }
-
-  .text-custom-hover {
-    color: theme('colors.hover_text');
-  }
-
-  .bg-custom-base {
-    background-color: theme('colors.background');
-  }
-
-  .button-background {
-    background-color: theme('colors.button');
-  }
-
-  .custom-menu-background {
-    background-color: theme('colors.menu');
-  }
-
   .menu-text {
     color: theme('colors.background');
     font-weight: 600;
   }
-
-  .button-background-hover {
-    background-color: theme('colors.hover');
-  }
-
 }
 
-/* Добавление пользовательских классов к элементу #root */
-#root {
-  @apply text-custom-purple bg-custom-base w-screen h-screen ;
-}
+
 
 
