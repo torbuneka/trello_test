@@ -1,4 +1,4 @@
-import menuLogo from '@src/assets/img/menu_logo.svg';
+import menuLogo from '@/assets/img/menu_logo.svg';
 import { NavLink } from 'react-router-dom';
 import { RoutesPath } from '../../../routesPath.ts';
 
