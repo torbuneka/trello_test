@@ -16,6 +16,7 @@ export const Menu = () => {
         </NavLink>
         <NavLink
           to={RoutesPath.List}
+          end
           className={({ isActive }) =>
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
@@ -24,6 +25,7 @@ export const Menu = () => {
         </NavLink>
         <NavLink
           to={RoutesPath.Create}
+          end
           className={({ isActive }) =>
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
