@@ -3,16 +3,20 @@ import { RoutesPath } from '../../routesPath';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Loader } from '../../components';
+import * as z from 'zod';
+
+const Task = z.object({
+  id: z.number(),
+  body: z.string().optional(),
+  title: z.string(),
+  userId: z.number().optional()
+});
+
+const TaskArray = z.array(Task);
+type TaskArray = z.infer<typeof TaskArray>;
 
 export const TaskList = () => {
-  interface Foo {
-    id: number;
-    body: string;
-    title: string;
-    userId: number;
-  }
-
-  const [appState, setAppState] = useState<Foo[]>([]);
+  const [appState, setAppState] = useState<TaskArray | null>(null);
 
   const [loading, setLoading] = React.useState<boolean>(false);
   useEffect(() => {
@@ -21,8 +25,7 @@ export const TaskList = () => {
     axios
       .get(apiUrl)
       .then(resp => {
-        // const allTask: Array<Foo> = resp.data;
-        setAppState(resp?.data || []);
+        setAppState(resp?.data);
         console.log('allTask', resp?.data, appState);
       })
       .finally(() => {
@@ -38,7 +41,7 @@ export const TaskList = () => {
         <div>
           {' '}
           <p className="font-bold">Список задач</p>
-          {[...appState].map((x, i) => (
+          {appState?.map((x, i) => (
             <Link
               key={i}
               to={generatePath(RoutesPath.Detail, { id: x.id })}
