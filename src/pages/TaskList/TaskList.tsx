@@ -1,29 +1,27 @@
 import { Link, generatePath } from 'react-router-dom';
 import { RoutesPath } from '../../routesPath';
-import React, { useEffect, useState } from 'react';
 import { Loader } from '../../components';
 import { asyncRequest } from '../../api';
 import { Tasks } from '../../types';
+import { useQuery } from 'react-query';
 
 export const TaskList = () => {
-  const [appState, setAppState] = useState<Tasks | null>(null);
-
-  const [loading, setLoading] = React.useState(false);
-  useEffect(() => {
-    setLoading(true);
+  const {
+    data: appState,
+    isLoading,
+    isError
+  } = useQuery<Tasks>('tasks', async () => {
     const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-    asyncRequest(apiUrl)
-      .then(resp => {
-        setAppState(resp);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    const response = await asyncRequest(apiUrl);
+    return response;
+  });
+
   return (
     <div className="w-full">
-      {loading ? (
+      {isLoading ? (
         <Loader />
+      ) : isError ? (
+        <p>Error</p>
       ) : (
         <div>
           {' '}
