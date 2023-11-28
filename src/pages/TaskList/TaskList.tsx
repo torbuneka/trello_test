@@ -1,36 +1,23 @@
 import { Link, generatePath } from 'react-router-dom';
 import { RoutesPath } from '../../routesPath';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Loader } from '../../components';
-import * as z from 'zod';
-
-const Task = z.object({
-  id: z.number(),
-  body: z.string().optional(),
-  title: z.string(),
-  userId: z.number().optional()
-});
-
-const TaskArray = z.array(Task);
-type TaskArray = z.infer<typeof TaskArray>;
+import { asyncRequest } from '../../api';
+import { Tasks } from '../../types';
 
 export const TaskList = () => {
-  const [appState, setAppState] = useState<TaskArray | null>(null);
+  const [appState, setAppState] = useState<Tasks | null>(null);
 
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState(false);
   useEffect(() => {
     setLoading(true);
     const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-    axios
-      .get(apiUrl)
+    asyncRequest(apiUrl)
       .then(resp => {
-        setAppState(resp?.data);
-        console.log('allTask', resp?.data, appState);
+        setAppState(resp);
       })
       .finally(() => {
         setLoading(false);
-        console.log('loading', loading);
       });
   }, []);
   return (
@@ -41,13 +28,13 @@ export const TaskList = () => {
         <div>
           {' '}
           <p className="font-bold">Список задач</p>
-          {appState?.map((x, i) => (
+          {appState?.map(item => (
             <Link
-              key={i}
-              to={generatePath(RoutesPath.Detail, { id: x.id })}
+              key={item.id}
+              to={generatePath(RoutesPath.Detail, { id: item.id })}
               className="block"
             >
-              {x.id} задача
+              {item.id} задача
             </Link>
           ))}
         </div>
