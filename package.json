@@ -8,11 +8,13 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "eslint-import-resolver-alias": "^1.1.2",
+    "axios": "^1.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.15.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

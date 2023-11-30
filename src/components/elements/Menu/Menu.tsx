@@ -1,4 +1,4 @@
-import menuLogo from '@src/assets/img/menu_logo.svg';
+import menuLogo from '@/assets/img/menu_logo.svg';
 import { NavLink } from 'react-router-dom';
 import { RoutesPath } from '../../../routesPath.ts';
 
@@ -16,6 +16,7 @@ export const Menu = () => {
         </NavLink>
         <NavLink
           to={RoutesPath.List}
+          end
           className={({ isActive }) =>
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
@@ -24,6 +25,7 @@ export const Menu = () => {
         </NavLink>
         <NavLink
           to={RoutesPath.Create}
+          end
           className={({ isActive }) =>
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }

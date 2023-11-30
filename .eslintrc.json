@@ -53,7 +53,8 @@
   },
   "settings": {
     "import/resolver": {
-    "alias": true
+      "typescript": {},
+      "alias": true
     }
   }
 }
