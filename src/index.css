@@ -7,6 +7,23 @@
     color: theme('colors.background');
     font-weight: 600;
   }
+
+  .popup {
+    box-shadow: theme('boxShadow.full');
+    position: fixed;
+        top: 50%;
+        width: 300px;
+        left: 50%;
+        box-sizing: border-box;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        border-radius: 16px;
+        height: 400px;
+        padding: 24px;
+        z-index: 2000;
+  }
+
+  
 }
 
 
