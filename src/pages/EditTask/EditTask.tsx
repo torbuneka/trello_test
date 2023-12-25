@@ -2,23 +2,36 @@ import { useParams } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from 'src/components';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { taskEdit } from '../../types';
+import { taskSchema } from '../../types';
 
-const schema = taskEdit;
+const schema = taskSchema;
 
 export const EditTask = () => {
   const { id } = useParams();
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid }
+    // setError,
+    formState: { errors }
   } = useForm({
     resolver: zodResolver(schema)
   });
 
+  // React.useEffect(() => {
+  //   setError('id', {
+  //     type: 'manual',
+  //     message: 'Dont Forget Your Username Should Be Cool!'
+  //   });
+  // }, [setError]);
+
   const onSubmit: SubmitHandler<typeof schema> = data => {
-    if (isValid) {
-      console.log({ ...data, id });
+    if (data) {
+      for (let key in data) {
+        console.log({ ...data }, key);
+        // if (data[key] == '') {
+        //   console.log('key', key);
+        // }
+      }
     } else {
       console.log(false);
     }
@@ -26,37 +39,41 @@ export const EditTask = () => {
 
   console.log('errors', errors);
 
-  // Вывод в консоль значения isValid
-  console.log('isValid', isValid);
-
   return (
     <form className="block" onSubmit={handleSubmit(onSubmit)}>
       {id}
       <div>
+        <p className="font-bold">Id задачи</p>
         <input
-          type="number"
-          defaultValue={Number(id) || 0}
-          {...register('idTask')}
+          defaultValue={id ? String(id) : ''}
+          {...register('id', { required: true })}
         />
-        <p>{errors.idTask && <span>This field is required</span>}</p>
-
-        <p>Наименование задачи</p>
+        <p className="text-neutral-600">
+          {errors.id && <span>This field is required</span>}
+        </p>
+      </div>
+      <div>
+        <p className="font-bold">Наименование задачи</p>
         <input
           defaultValue={id ? String(id) : ''}
           {...register('title', { required: true })}
         />
-        <p>{errors.title && <span>This field is required</span>}</p>
+        <p className="text-neutral-600">
+          {errors.title && <span>This field is required</span>}
+        </p>
       </div>
 
       <div>
-        <p>Статус</p>
+        <p className="font-bold">Статус</p>
         <select {...register('status', { required: true })}>
           <option value="open">open</option>
           <option value="work">work</option>
           <option value="closed">closed</option>
           <option value="canceled">canceled</option>
         </select>
-        <p>{errors.status && <span>This field is required</span>}</p>
+        <p className="text-neutral-600">
+          {errors.status && <span>{errors.status.message}</span>}
+        </p>
       </div>
 
       <Button

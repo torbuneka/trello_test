@@ -4,9 +4,9 @@ import { RoutesPath } from '../../../routesPath';
 
 export interface IProps {
   name: string;
-  status: string;
-  id: number;
-  onClickTask?: (id: number, name: string, status: string) => void;
+  status?: string;
+  id: number | string;
+  onClickTask?: (id: number | string, name: string, status?: string) => void;
 }
 
 export const Task = (props: IProps) => {

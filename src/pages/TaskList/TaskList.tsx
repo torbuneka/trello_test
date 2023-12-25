@@ -20,7 +20,11 @@ export const TaskList = () => {
 
   const navigate = useNavigate();
 
-  const handleButtonClick = (id: number, name: string, status: string) => {
+  const handleButtonClick = (
+    id: number | string,
+    name: string,
+    status?: string
+  ) => {
     navigate(
       generatePath(RoutesPath.Detail, {
         id: `${id}`,
@@ -45,7 +49,7 @@ export const TaskList = () => {
             <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
               <p className="font-bold">Открыта</p>
               {appState?.map(item =>
-                item.id <= 20 ? (
+                Number(item.id) <= 20 ? (
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
@@ -60,7 +64,7 @@ export const TaskList = () => {
             <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
               <p className="font-bold">В работе</p>
               {appState?.map(item =>
-                item.id > 20 ? (
+                Number(item.id) > 20 ? (
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
@@ -75,7 +79,7 @@ export const TaskList = () => {
             <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
               <p className="font-bold">Завершена</p>
               {appState?.map(item =>
-                item.id > 40 ? (
+                Number(item.id) > 40 ? (
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
@@ -90,7 +94,7 @@ export const TaskList = () => {
             <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
               <p className="font-bold">Отменена</p>
               {appState?.map(item =>
-                item.id > 60 ? (
+                Number(item.id) > 60 ? (
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
