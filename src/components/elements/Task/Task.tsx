@@ -2,19 +2,19 @@ import { Button } from '../Button';
 import { useNavigate, generatePath } from 'react-router-dom';
 import { RoutesPath } from '../../../routesPath';
 
-export interface IProps {
+export interface TaskProps {
   name: string;
   status: string;
   id: number;
   onClickTask?: (id: number, name: string, status: string) => void;
 }
 
-export const Task = (props: IProps) => {
+export const Task = (props: TaskProps) => {
   const { name, status, onClickTask, id } = props;
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate(generatePath(RoutesPath.Edit, { id: `${id}` }));
+    navigate(generatePath(RoutesPath.Edit, { id }));
   };
 
   return (

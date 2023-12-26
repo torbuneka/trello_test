@@ -1,10 +1,10 @@
-export interface IProps {
+export interface ButtonProps {
   color: string;
   buttonText: string;
   onClick?: () => void;
 }
 
-export const Button = (props: IProps) => {
+export const Button = (props: ButtonProps) => {
   const { color, buttonText, onClick } = props;
   return (
     <button
