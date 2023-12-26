@@ -5,6 +5,7 @@ import { RoutesPath } from './routesPath';
 const CreateTask = lazy(() => import('./pages/CreateTask'));
 const TaskDetail = lazy(() => import('./pages/TaskDetail'));
 const TaskList = lazy(() => import('./pages/TaskList'));
+const EditTask = lazy(() => import('./pages/EditTask'));
 const MainLayout = lazy(() => import('./components/layouts/MainLayout'));
 
 const routes = createBrowserRouter([
@@ -25,12 +26,18 @@ const routes = createBrowserRouter([
         element: <CreateTask />
       },
       {
-        path: RoutesPath.Detail,
-        element: <TaskDetail />
+        path: RoutesPath.Edit,
+        element: <EditTask />
       },
       {
         path: RoutesPath.List,
-        element: <TaskList />
+        element: <TaskList />,
+        children: [
+          {
+            path: ':id',
+            element: <TaskDetail />
+          }
+        ]
       }
     ]
   }

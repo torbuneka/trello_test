@@ -20,6 +20,9 @@ export default {
       },
       borderRadius: {
         '4xl': '2rem'
+      },
+      boxShadow: {
+        full: '0 0 10px rgba(0, 0, 0, 1)'
       }
     }
   },
