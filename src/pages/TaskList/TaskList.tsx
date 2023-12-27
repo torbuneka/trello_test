@@ -27,7 +27,7 @@ export const TaskList = () => {
   ) => {
     navigate(
       generatePath(RoutesPath.Detail, {
-        id: `${id}`,
+        id,
         name: name,
         status: status
       })
@@ -53,7 +53,7 @@ export const TaskList = () => {
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
-                    name={`${item.id} задача`}
+                    name={item.id + ' задача'}
                     status={'open'}
                   />
                 ) : (
@@ -68,7 +68,7 @@ export const TaskList = () => {
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
-                    name={`${item.id} задача`}
+                    name={item.id + ' задача'}
                     status={'work'}
                   />
                 ) : (
@@ -83,7 +83,7 @@ export const TaskList = () => {
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
-                    name={`${item.id} задача`}
+                    name={item.id + ' задача'}
                     status={'closed'}
                   />
                 ) : (
@@ -98,7 +98,7 @@ export const TaskList = () => {
                   <Task
                     id={item.id}
                     onClickTask={handleButtonClick}
-                    name={`${item.id} задача`}
+                    name={item.id + ' задача'}
                     status={'canceled'}
                   />
                 ) : (

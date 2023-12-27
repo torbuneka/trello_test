@@ -12,7 +12,7 @@ export const TaskDetail = () => {
     navigate(RoutesPath.List);
   };
   const editTask = () => {
-    navigate(generatePath(RoutesPath.Edit, { id: `${id}` }));
+    navigate(generatePath(RoutesPath.Edit, { id }));
   };
 
   return (
@@ -20,7 +20,7 @@ export const TaskDetail = () => {
       {isPopupVisible ? (
         <div className="popup flex flex-col justify-between">
           <p className="read-the-docs font-bold"> Наименование задачи:</p>
-          <p>{`${id} задача`}</p>
+          <p>{id} задача</p>
           <div className="flex justify-between ">
             <Button
               color={'pink'}

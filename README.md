@@ -1,5 +1,14 @@
 # Trello_test is education project based on React, Vite, TypeScript
 
+## TODO:
+- [x] Собрать react проект на vite с tailwind, подключить линтеры
+- [x] React router
+- [x] Ходить за какой-нибудь апишкой todo-list с использованием react-query
+- [ ] Полученные данные разбить на колонки со статусами и добавить оформление тасков
+- [ ] ui-kit
+- [ ] форма редактирования таска
+- [ ] Storybook
+
 # План обучения фронтенд-разработке с использованием TensorFlow
 
 ## База
@@ -76,9 +85,5 @@
   - [Final Form](https://final-form.org/react)
   - [Zod Resolver](https://www.npmjs.com/package/@hookform/resolvers)
      
-## TODO:
-- [ ] Полученные данные разбить на колонки со статусами и добавить оформление тасков
-- [ ] ui-kit
-- [ ] форма редактирования таска
-- [ ] Storybook
+
 
