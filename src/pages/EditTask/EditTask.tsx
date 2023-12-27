@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, generatePath } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from 'src/components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { taskSchema } from '../../types';
+import { RoutesPath } from '../../routesPath';
 
 const schema = taskSchema;
 
@@ -11,40 +12,25 @@ export const EditTask = () => {
   const {
     register,
     handleSubmit,
-    // setError,
     formState: { errors }
   } = useForm({
     resolver: zodResolver(schema)
   });
 
-  // React.useEffect(() => {
-  //   setError('id', {
-  //     type: 'manual',
-  //     message: 'Dont Forget Your Username Should Be Cool!'
-  //   });
-  // }, [setError]);
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<typeof schema> = data => {
-    if (data) {
-      for (let key in data) {
-        console.log({ ...data }, key);
-        // if (data[key] == '') {
-        //   console.log('key', key);
-        // }
-      }
-    } else {
-      console.log(false);
+    if (data && data.id) {
+      navigate(generatePath(RoutesPath.Detail, { id: data.id }));
     }
   };
 
-  console.log('errors', errors);
-
   return (
     <form className="block" onSubmit={handleSubmit(onSubmit)}>
-      {id}
-      <div>
+      <div className="mb-5">
         <p className="font-bold">Id задачи</p>
         <input
+          className="h-9 w-full"
           defaultValue={id ? String(id) : ''}
           {...register('id', { required: true })}
         />
@@ -52,9 +38,10 @@ export const EditTask = () => {
           {errors.id && <span>This field is required</span>}
         </p>
       </div>
-      <div>
+      <div className="mb-5">
         <p className="font-bold">Наименование задачи</p>
         <input
+          className="h-9 w-full"
           defaultValue={id ? String(id) : ''}
           {...register('title', { required: true })}
         />
@@ -63,9 +50,12 @@ export const EditTask = () => {
         </p>
       </div>
 
-      <div>
+      <div className="mb-5">
         <p className="font-bold">Статус</p>
-        <select {...register('status', { required: true })}>
+        <select
+          className="h-9 w-full"
+          {...register('status', { required: true })}
+        >
           <option value="open">open</option>
           <option value="work">work</option>
           <option value="closed">closed</option>

@@ -2,7 +2,6 @@ import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RoutesPath } from './routesPath';
 
-const CreateTask = lazy(() => import('./pages/CreateTask'));
 const TaskDetail = lazy(() => import('./pages/TaskDetail'));
 const TaskList = lazy(() => import('./pages/TaskList'));
 const EditTask = lazy(() => import('./pages/EditTask'));
@@ -23,7 +22,7 @@ const routes = createBrowserRouter([
       },
       {
         path: RoutesPath.Create,
-        element: <CreateTask />
+        element: <EditTask />
       },
       {
         path: RoutesPath.Edit,

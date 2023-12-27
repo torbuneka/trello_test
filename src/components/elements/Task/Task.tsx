@@ -20,7 +20,7 @@ export const Task = (props: TaskProps) => {
   return (
     <div className="bg-white rounded p-3 hover:bg-red-50">
       <p
-        className=" hover:cursor-pointer"
+        className="text-black font-bold hover:cursor-pointer hover:text-pink-600"
         onClick={() => onClickTask && onClickTask(id, name, status)}
       >
         Наименование задачи:
