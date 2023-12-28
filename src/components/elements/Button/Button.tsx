@@ -4,14 +4,13 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-export const Button = (props: ButtonProps) => {
-  const { color, buttonText, onClick } = props;
+export const Button = ({
+  color = 'pink',
+  buttonText = '',
+  ...props
+}: ButtonProps) => {
   return (
-    <button
-      style={{ background: color }}
-      className="rounded p-1"
-      onClick={() => onClick && onClick()}
-    >
+    <button style={{ background: color }} className="rounded p-1" {...props}>
       {buttonText}
     </button>
   );
