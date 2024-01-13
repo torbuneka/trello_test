@@ -4,7 +4,7 @@ export const task = z.object({
   id: z.union([z.string(), z.number()]),
   body: z.string().optional(),
   title: z.string(),
-  status: z.string().optional()
+  status: z.string().default('open')
 });
 
 export type Task = z.infer<typeof task>;
