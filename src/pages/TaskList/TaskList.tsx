@@ -1,26 +1,23 @@
-import { Loader } from '../../components';
 import { Task } from '../../components';
-import { asyncRequest } from '../../api';
-import { Tasks } from '../../types';
-import { useQuery } from 'react-query';
 import { useNavigate, generatePath } from 'react-router-dom';
 import { RoutesPath } from '../../routesPath';
 import { Outlet } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { Tasks } from '../../types';
 
 export const TaskList = () => {
-  const {
-    data: appState,
-    isLoading,
-    isError
-  } = useQuery<Tasks>('tasks', async () => {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
-    const response = await asyncRequest(apiUrl);
-    return response;
-  });
-
   const navigate = useNavigate();
 
-  const handleButtonClick = (id: number, name: string, status: string) => {
+  const allTasks = useQuery<Tasks>('allTasks', {
+    staleTime: 2000,
+    enabled: true
+  }).data;
+
+  const handleButtonClick = (
+    id: number | string,
+    name: string,
+    status?: string
+  ) => {
     navigate(
       generatePath(RoutesPath.Detail, {
         id,
@@ -33,78 +30,75 @@ export const TaskList = () => {
   return (
     <div className="w-full">
       <Outlet />
-      {isLoading ? (
-        <Loader />
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        <div>
-          {' '}
-          <p className="font-bold">Список задач</p>
-          <div className="flex gap-6">
-            <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
-              <p className="font-bold">Открыта</p>
-              {appState?.map(item =>
-                item.id <= 20 ? (
-                  <Task
-                    id={item.id}
-                    onClickTask={handleButtonClick}
-                    name={item.id + ' задача'}
-                    status={'open'}
-                  />
-                ) : (
-                  ''
-                )
-              )}
-            </div>
-            <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
-              <p className="font-bold">В работе</p>
-              {appState?.map(item =>
-                item.id > 20 ? (
-                  <Task
-                    id={item.id}
-                    onClickTask={handleButtonClick}
-                    name={item.id + ' задача'}
-                    status={'work'}
-                  />
-                ) : (
-                  ''
-                )
-              )}
-            </div>
-            <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
-              <p className="font-bold">Завершена</p>
-              {appState?.map(item =>
-                item.id > 40 ? (
-                  <Task
-                    id={item.id}
-                    onClickTask={handleButtonClick}
-                    name={item.id + ' задача'}
-                    status={'closed'}
-                  />
-                ) : (
-                  ''
-                )
-              )}
-            </div>
-            <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
-              <p className="font-bold">Отменена</p>
-              {appState?.map(item =>
-                item.id > 60 ? (
-                  <Task
-                    id={item.id}
-                    onClickTask={handleButtonClick}
-                    name={item.id + ' задача'}
-                    status={'canceled'}
-                  />
-                ) : (
-                  ''
-                )
-              )}
-            </div>
+
+      <div>
+        <div className="flex gap-6">
+          <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
+            <p className="font-bold">Open</p>
+            {allTasks?.map(item =>
+              item.status == 'open' ? (
+                <Task
+                  key={item.id}
+                  id={item.id}
+                  onClickTask={handleButtonClick}
+                  name={item.title}
+                  status={'open'}
+                />
+              ) : (
+                ''
+              )
+            )}
+          </div>
+          <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
+            <p className="font-bold">In progress</p>
+            {allTasks?.map(item =>
+              item.status == 'in progress' ? (
+                <Task
+                  key={item.id}
+                  id={item.id}
+                  onClickTask={handleButtonClick}
+                  name={item.title}
+                  status={'in progress'}
+                />
+              ) : (
+                ''
+              )
+            )}
+          </div>
+          <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
+            <p className="font-bold">Closed</p>
+            {allTasks?.map(item =>
+              item.status == 'closed' ? (
+                <Task
+                  key={item.id}
+                  id={item.id}
+                  onClickTask={handleButtonClick}
+                  name={item.title}
+                  status={'closed'}
+                />
+              ) : (
+                ''
+              )
+            )}
+          </div>
+          <div className="w-full shadow-sm rounded shadow-white gap-6 flex-col flex">
+            <p className="font-bold">Canceled</p>
+            {allTasks?.map(item =>
+              item.status == 'canceled' ? (
+                <Task
+                  key={item.id}
+                  id={item.id}
+                  onClickTask={handleButtonClick}
+                  name={item.title}
+                  status={'canceled'}
+                />
+              ) : (
+                ''
+              )
+            )}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

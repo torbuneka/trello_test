@@ -4,9 +4,9 @@ import { RoutesPath } from '../../../routesPath';
 
 export interface TaskProps {
   name: string;
-  status: string;
-  id: number;
-  onClickTask?: (id: number, name: string, status: string) => void;
+  status?: string;
+  id: number | string;
+  onClickTask?: (id: number | string, name: string, status?: string) => void;
 }
 
 export const Task = (props: TaskProps) => {
@@ -20,19 +20,14 @@ export const Task = (props: TaskProps) => {
   return (
     <div className="bg-white rounded p-3 hover:bg-red-50">
       <p
-        className=" hover:cursor-pointer"
+        className="font-bold hover:cursor-pointer hover:text-pink-600"
         onClick={() => onClickTask && onClickTask(id, name, status)}
       >
-        Наименование задачи:
+        Name: {name}
       </p>
-      <p className="font-bold">{name}</p>
-      <p className="font-bold">Статус</p>
+      <p className="font-bold">Status</p>
       <p>{status}</p>
-      <Button
-        color={'pink'}
-        buttonText="Реактировать"
-        onClick={handleButtonClick}
-      />
+      <Button color={'pink'} buttonText="Edit" onClick={handleButtonClick} />
     </div>
   );
 };
