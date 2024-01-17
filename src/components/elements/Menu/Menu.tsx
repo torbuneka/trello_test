@@ -21,7 +21,7 @@ export const Menu = () => {
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
         >
-          Список
+          Task list
         </NavLink>
         <NavLink
           to={RoutesPath.Create}
@@ -30,7 +30,7 @@ export const Menu = () => {
             `menu-text${isActive ? ' decoration-wavy underline' : ''}`
           }
         >
-          Создать
+          Create
         </NavLink>
       </div>
     </>
