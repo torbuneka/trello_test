@@ -12,7 +12,8 @@
     "google",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -22,34 +23,39 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
-  "rules": {"react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "react/jsx-filename-extension": [
-          1,
-          {
-            "extensions": [
-              ".tsx"
-            ]
-          }
-        ],
-        "import/prefer-default-export": "off",
-        "import/extensions": [
-          "error",
-          "ignorePackages",
-          {
-            "ts": "never",
-            "tsx": "never"
-          }
-        ],
-     
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "require-jsdoc": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
     "prettier/prettier": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-one-expression-per-line": "off",
-    "no-use-before-define":"off"
+    "no-use-before-define": "off"
   },
   "settings": {
     "import/resolver": {
@@ -58,4 +64,3 @@
     }
   }
 }
-
