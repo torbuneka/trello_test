@@ -1,6 +1,6 @@
 import { useParams, useNavigate, generatePath } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button } from 'src/components';
+import { VKButton } from 'src/components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { taskSchema } from '../../types';
 import { RoutesPath } from '../../routesPath';
@@ -105,7 +105,7 @@ export const EditTask = () => {
         </p>
       </div>
 
-      <Button
+      <VKButton
         color={'pink'}
         buttonText={'Save'}
         onClick={handleSubmit(onSubmit)}

@@ -1,0 +1,1 @@
+export { VKButton } from './VKButton';
